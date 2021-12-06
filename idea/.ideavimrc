@@ -1,0 +1,35 @@
+" set easymotion
+set commentary
+set textobj-entire
+set ReplaceWithRegister
+set argtextobj
+set showmode
+set incsearch
+set rnu
+set visualbell
+set noerrorbells
+
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+let mapleader=" "
+let maplocalleader=","
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" Windows management
+noremap wj <C-w>j
+noremap wk <C-w>k
+noremap wh <C-w>h
+noremap wl <C-w>l
+noremap wc <C-w>c
+noremap wv <C-w>v
+noremap ws <C-w>s
+noremap wo <C-w>o
+
+" Misc
+map <leader>s <Action>(SelectInProjectView)
+map <leader>rn <Action>(RenameElement)
+map <S-Space> <Action>(GotoNextError)
+noremap   <space>
+
