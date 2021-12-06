@@ -46,6 +46,7 @@ return require('packer').startup(
         -- use 'Mofiqul/vscode.nvim'
         use 'sainnhe/gruvbox-material'
         use 'hoob3rt/lualine.nvim'
+        use 'folke/tokyonight.nvim'
 
         if packer_bootstrap then
             require('packer').sync()

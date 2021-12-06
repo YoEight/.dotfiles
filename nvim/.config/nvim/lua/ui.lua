@@ -51,12 +51,16 @@ require('nvim-tree').setup {
 }
 
 vim.g.vscode_style = "dark"
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_style = false
+vim.g.tokyonight_italic_keywords = false
 -- vim.g.gruvbox_material_enable_italic = true
 
 require('lualine').setup {
   options = {
     -- theme = 'vscode',
-    theme = 'gruvbox-material',
+    -- theme = 'gruvbox-material',
+    theme = 'tokyonight',
     component_separators = { left = '\\', right = '/'},
     -- Those separators only work on gnome-terminal so far.
     -- section_separators = {left = '◣', right = '◢'},
@@ -92,7 +96,8 @@ require('indent_blankline').setup {
   show_current_context_start = false,
 }
 
---    highlight NvimTreeFolderIcon guibg=blue
+-- highlight NvimTreeFolderIcon guibg=blue
+-- colorscheme gruvbox-material
 vim.cmd [[
-    colorscheme gruvbox-material
+    colorscheme tokyonight
 ]]
