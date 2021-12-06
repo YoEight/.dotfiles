@@ -1,0 +1,10 @@
+Packages/*
+!Packages/User/
+
+Local/
+Log/
+Installed\ Packages/
+
+*.swp
+*.png
+*.last-run

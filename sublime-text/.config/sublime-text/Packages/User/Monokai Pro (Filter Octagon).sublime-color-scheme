@@ -1,0 +1,66 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+	"variables":
+	{
+	},
+	"globals":
+	{
+	},
+	"rules":
+	[
+	    {
+	    	"name": "Rust storage type",
+	        "scope": "storage.type",
+	        "foreground": "var(red)"
+	    },
+	    {
+	    	"name": "storage source type",
+	        "scope": "storage.type.source, storage.type.numeric, support.type, storage.type.go",
+	        "foreground": "var(blue)",
+	        "font_style": "regular",
+	    },
+	    {
+	    	"name": "Rust storage function type",
+	        "scope": "storage.type.function",
+	        "foreground": "var(blue)",
+	        "font_style": "italic",
+	    },
+	    {
+	    	"name": "Rust macros",
+	    	"scope": "support.macro",
+	    	"foreground": "var(purple)",
+	    	"font_style": "italic",
+	    },
+	    {
+	    	"name": "Punctuations",
+	    	"scope": "punctuation.accessor, punctuation.separator.colon, punctuation.separator.arrow",
+	    	"foreground": "var(red)"
+	    },
+	    {
+	    	"name": "Paramaters",
+	    	"scope": "variable.parameter",
+	    	"foreground": "var(white)",
+	    	"font_style": "regular",
+	    },
+	    {
+	    	"name": "Modifiers",
+	    	"scope": "storage.modifier",
+	    	"font_style": "regular",
+	    },
+	    {
+	    	"name": "Modifiers mut rust",
+	    	"scope": "storage.modifier.mut.rust",
+	    	"font_style": "italic",
+	    },
+	    {
+	    	"name": "Rust Self storage type",
+	    	"scope": "storage.type.self.rust",
+	    	"foreground": "#b2b9bd",
+	    },
+	    {
+	    	"name": "Ignore function call in macro attribute call",
+	    	"scope": "meta.function-call.rust variable.function.rust",
+	    	"foreground": "#b2b9bd",
+	    },
+	]
+}

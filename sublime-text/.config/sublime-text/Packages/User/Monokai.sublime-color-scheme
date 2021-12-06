@@ -1,0 +1,237 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+	"variables":
+	{
+		"grey": "hsla(55, 8%, 90%, 0.7)",
+	},
+	"globals":
+	{
+	},
+	"rules":
+	[
+		{
+            "name": "Storage type",
+            "scope": "storage.type",
+            "foreground": "var(red2)",
+            "font_style": "italic"
+        },	
+        {
+            "name": "Storage modifier",
+            "scope": "storage.modifier",
+            "foreground": "var(red2)",
+            "font_style": "italic"
+        },	
+        // {
+        //     "name": "Storage type",
+        //     "scope": "storage.type.struct",
+        //     "foreground": "var(yellow2)",
+        // },	
+        {
+        	"name": "Punction accessor",
+        	"scope": "punctuation.accessor",
+            "foreground": "var(red2)",
+        },
+        
+        {
+        	"name": "Punction Terminator",
+        	"scope": "punctuation.terminator, punctuation",
+            "foreground": "var(grey)",
+        },
+        {
+            "name": "Function Support",
+            "scope": "support.function",
+            "foreground": "var(yellow2)",
+        },
+        {
+            "name": "Function call annotation",
+            "scope": "variable.annotation",
+            "foreground": "var(grey)",
+        },
+        {
+            "name": "Storage type function",
+            "scope": "storage.type.function",
+            "foreground": "var(blue)",
+            "font_style": "regular",
+        },
+        {
+            "name": "Storage type impl",
+            "scope": "storage.type.impl",
+            "foreground": "var(red2)",
+            "font_style": "regular",
+        },
+        {
+        	"name": "Support types",
+        	"scope": "support.type",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "Support macro",
+        	"scope": "support.macro",
+        	"foreground": "var(yellow2)",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "Entity name macro",
+        	"scope": "entity.name.macro",
+        	"foreground": "var(yellow2)",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "Entity name struct",
+        	"scope": "entity.name.struct",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "Entity name struct impl",
+        	"scope": "source.rust meta.impl.rust entity.name.impl.rust",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "Entity name type",
+        	"scope": "storage.type.trait",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+     	{
+        	"name": "Punctation arrow operator",
+        	"scope": "source.rust meta.impl.rust meta.block.rust meta.function.rust meta.function.return-type.rust punctuation.separator.rust",
+            "foreground": "var(red2)",
+        },
+        {
+        	"name": "Punctation arrow operator meta",
+        	"scope": "source.rust meta.function.rust meta.function.return-type.rust punctuation.separator.rust",
+            "foreground": "var(red2)",
+        },
+        {
+        	"name": "Meta impl",
+        	"scope": "source.rust meta.impl.rust",
+            "foreground": "var(blue)",
+        },
+        {
+        	"name": "struct block type",
+        	"scope": "source.rust meta.struct.rust meta.block.rust",
+            "foreground": "var(blue)",
+        },
+		{
+        	"name": "struct block field",
+        	"scope": "source.rust meta.struct.rust meta.block.rust variable.other.member.rust",
+            "foreground": "var(white)",
+        },
+		{
+        	"name": "impl path type",
+        	"scope": "source.rust meta.impl.rust meta.path.rust",
+            "foreground": "var(white)",
+        },
+		{
+        	"name": "self member rust",
+        	"scope": "source.rust meta.impl.rust meta.block.rust meta.function.rust meta.block.rust",
+            "foreground": "var(white)",
+        },
+        // {
+        //     "name": "type static decl rust",
+        // 	"scope": "source.rust meta.impl.rust meta.block.rust meta.function.rust meta.block.rust meta.path.rust",
+        //     "foreground": "var(blue)",	
+        // },
+        {
+        	"name": "storage modifier",
+        	"scope": "storage.modifier",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "storage modifier mut",
+        	"scope": "storage.modifier.mut",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "struct support type",
+        	"scope": "source.rust meta.struct.rust meta.block.rust storage.type.rust",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+        {	"name": "Comment",
+        	"scope": "comment",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "Storage type source rust",
+        	"scope": "storage.type.source",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "Storage type Numeric rust",
+        	"scope": "storage.type.numeric",
+        	"foreground": "var(blue)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "Variable function",
+        	"scope": "variable.function",
+        	"foreground": "var(yellow2)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "Storage type Self rust",
+        	"scope": "storage.type.self",
+        	"foreground": "var(grey)",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "Storage type trait rust",
+        	"scope": "storage.type.trait",
+        	"foreground": "var(red2)",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "entity name trait rust",
+        	"scope": "entity.name.trait",
+        	"foreground": "var(blue)",
+        },
+        {
+        	"name": "Generic type rust",
+        	"scope": "source.rust meta.function.rust meta.generic.rust",
+        	"foreground": "var(blue)",
+        	// "font_style": "italic",
+        },
+        // {
+        // 	"name": "function parameters type rust",
+        // 	"scope": "source.rust meta.function.rust meta.function.parameters.rust",
+        // 	"foreground": "var(blue)",
+        // 	// "font_style": "italic",
+        // },
+        {
+        	"name": "function exception for path parameters type rust",
+        	// "scope": "source.rust meta.function.rust meta.function.parameters.rust meta.path.rust",
+        	"scope": "meta.path.rust",
+        	"foreground": "var(white)",
+        	// "font_style": "italic",
+        },
+        {
+        	"name": "variable parameters",
+        	"scope": "variable.parameter",
+        	"foreground": "var(white)",
+        	"font_style": "regular",
+        },
+        {
+        	"name": "variable languages",
+        	"scope": "variable.language.rust",
+        	"foreground": "var(grey)",
+        	"font_style": "italic",
+        },
+        {
+        	"name": "punctuation attribute rust",
+        	"scope": "punctuation.definition.annotation",
+        	"foreground": "var(grey)",
+        },
+        // {
+        // {
+        // {
+        //     "name": "type static decl function rust",
+        // 	"scope": "source.rust meta.impl.rust meta.block.rust meta.function.rust meta.block.rust",
+        //     "foreground": "var(yellow2)",	
+        // },
+	]
+}

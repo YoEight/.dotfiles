@@ -1,0 +1,19 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"GitHub Theme",
+		"LSP",
+		"LSP-file-watcher-chokidar",
+		"LSP-gopls",
+		"LSP-rust-analyzer",
+		"Package Control",
+		"PackageDev",
+		"Terminus",
+		"Theme - Monokai Pro",
+		"TOML",
+	],
+}
