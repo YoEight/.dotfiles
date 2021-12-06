@@ -39,11 +39,14 @@ cmp.setup({
 -- LSP
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
-    vimp.nnoremap({'silent'}, 'K', vim.lsp.buf.hover)
-    vimp.nnoremap({'silent'}, 'gd', vim.lsp.buf.definition)
-    vimp.nnoremap({'silent'}, '<leader>ca', vim.lsp.buf.code_action)
-    vimp.nnoremap({'silent'}, '<leader>cr', vim.lsp.buf.rename)
-    vimp.nnoremap({'silent'}, '<leader>F', vim.lsp.buf.formatting)
+    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local opts = { noremap=true, silent=true }
+
+    buf_set_keymap('n', 'K', '<cmd> lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'gd', '<cmd> lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', '<leader>ca', '<cmd> lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', '<leader>cr', '<cmd> lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<leader>F', '<cmd> lua vim.lsp.buf.formatting()<CR>', opts)
 
     -- require('virtualtypes').on_attach(client, bufnr)
 end
@@ -100,17 +103,17 @@ vimp.nnoremap('<leader>w>', ':vert res +10<cr>')
 vimp.nnoremap('<leader>w=', ':wincmd =<cr>')
 vimp.nnoremap('<leader>w-', ':res -10<cr>')
 vimp.nnoremap('<leader>w+', ':res +10<cr>')
-vimp.nnoremap('<leader>w0', ':wincmd c<cr>')
+vimp.nnoremap('<leader>wc', ':wincmd c<cr>')
 
 -- Terminal
 -- vimp.nnoremap('<leader>`', ':20split term://zsh<cr>')
 require('toggleterm').setup {
   size = 15,
-  open_mapping = [[<leader>\]],
+  open_mapping = [[<C-\>]],
   hide_numbers = true,
   shade_terminals = true,
   start_in_insert = true,
-  insert_mappings = false,
+  insert_mappings = true,
   persist_size = true,
   direction = 'horizontal',
   close_on_exit = true,

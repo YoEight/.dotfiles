@@ -61,7 +61,7 @@ require('lualine').setup {
     -- theme = 'vscode',
     -- theme = 'gruvbox-material',
     theme = 'tokyonight',
-    component_separators = { left = '\\', right = '/'},
+    -- component_separators = { left = '\\', right = '/'},
     -- Those separators only work on gnome-terminal so far.
     -- section_separators = {left = '◣', right = '◢'},
   }
@@ -92,7 +92,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
 })
 
 require('indent_blankline').setup {
-  show_current_context = true,
+  show_current_context = false,
   show_current_context_start = false,
 }
 
