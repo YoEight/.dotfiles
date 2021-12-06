@@ -45,8 +45,9 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', 'K', '<cmd> lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', 'gd', '<cmd> lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', '<leader>ca', '<cmd> lua vim.lsp.buf.code_action()<CR>', opts)
-    buf_set_keymap('n', '<leader>cr', '<cmd> lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<leader>crn', '<cmd> lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '<leader>F', '<cmd> lua vim.lsp.buf.formatting()<CR>', opts)
+    -- buf_set_keymap('n', '<leader>e', '<cmd> lua vim.diagnostic.open_float()<CR>', opts)
 
     -- require('virtualtypes').on_attach(client, bufnr)
 end
