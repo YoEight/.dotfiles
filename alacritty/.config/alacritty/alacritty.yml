@@ -118,7 +118,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: PragmataPro Mono
-    family: IBM Plex Mono # Iosevka Term
+    family: IBM Plex Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -196,13 +196,7 @@ font:
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
     #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor.
-  #
-  # Allowed values are CellForeground/CellBackground, which reference the
+    #bright_foreground: '#eaeaea' Cursor colors Colors which should be used to draw the terminal cursor. Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
   #cursor:
   #  text: CellBackground
