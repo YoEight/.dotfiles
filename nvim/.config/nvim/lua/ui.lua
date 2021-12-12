@@ -101,5 +101,5 @@ require('indent_blankline').setup {
 -- highlight NvimTreeFolderIcon guibg=blue
 -- colorscheme gruvbox-material
 vim.cmd [[
-    colorscheme tokyonight
+  colorscheme tokyonight
 ]]
