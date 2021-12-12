@@ -118,10 +118,10 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: PragmataPro Mono
-    family: IBM Plex Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
+    family: FuraMono Nerd Font # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Medium
 
   # Bold font face
   #bold:
