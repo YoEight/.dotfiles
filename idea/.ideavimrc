@@ -18,14 +18,15 @@ let maplocalleader=","
 let g:argtextobj_pairs="[:],(:),<:>"
 
 " Windows management
-noremap wj <C-w>j
-noremap wk <C-w>k
-noremap wh <C-w>h
-noremap wl <C-w>l
-noremap wc <C-w>c
-noremap wv <C-w>v
-noremap ws <C-w>s
-noremap wo <C-w>o
+noremap <leader>wj <C-w>j
+noremap <leader>wk <C-w>k
+noremap <leader>wh <C-w>h
+noremap <leader>wl <C-w>l
+noremap <leader>wc <C-w>c
+noremap <leader>wv <C-w>v
+noremap <leader>ws <C-w>s
+noremap <leader>wo <C-w>o
+noremap <leader>ww <C-w>w
 
 " Misc
 map <leader>s <Action>(SelectInProjectView)
