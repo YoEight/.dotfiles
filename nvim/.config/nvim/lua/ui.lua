@@ -1,54 +1,58 @@
-require('nvim-web-devicons').setup {
-    default = true,
-}
+-- require('nvim-web-devicons').setup {
+--     default = true,
+-- }
 
-require('nvim-tree').setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  open_on_setup       = false,
-  ignore_ft_on_setup  = {},
-  auto_close          = false,
-  open_on_tab         = false,
-  hijack_cursor       = false,
-  update_cwd          = false,
-  update_to_buf_dir   = {
-    enable = true,
-    auto_open = true,
-  },
-  diagnostics = {
-    enable = false,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    }
-  },
-  update_focused_file = {
-    enable      = false,
-    update_cwd  = false,
-    ignore_list = {}
-  },
-  system_open = {
-    cmd  = nil,
-    args = {}
-  },
-  filters = {
-    dotfiles = false,
-    custom = {}
-  },
-  view = {
-    width = 30,
-    height = 30,
-    hide_root_folder = false,
-    side = 'right',
-    auto_resize = false,
-    mappings = {
-      custom_only = false,
-      list = {}
-    }
-  }
-}
+-- require('nvim-tree').setup {
+--   disable_netrw       = true,
+--   hijack_netrw        = true,
+--   open_on_setup       = false,
+--   ignore_ft_on_setup  = {},
+--   open_on_tab         = false,
+--   hijack_cursor       = false,
+--   update_cwd          = false,
+--   update_to_buf_dir   = {
+--     enable = true,
+--     auto_open = true,
+--   },
+--   renderer = {
+--     icons = {
+--       webdev_colors = false,
+--     }
+--   },
+--   diagnostics = {
+--     enable = false,
+--     icons = {
+--       hint = "",
+--       info = "",
+--       warning = "",
+--       error = "",
+--     }
+--   },
+--   update_focused_file = {
+--     enable      = false,
+--     update_cwd  = false,
+--     ignore_list = {}
+--   },
+--   system_open = {
+--     cmd  = nil,
+--     args = {}
+--   },
+--   filters = {
+--     dotfiles = false,
+--     custom = {}
+--   },
+--   view = {
+--     width = 30,
+--     height = 30,
+--     hide_root_folder = false,
+--     side = 'right',
+--     auto_resize = false,
+--     mappings = {
+--       custom_only = false,
+--       list = {}
+--     }
+--   }
+-- }
 
 vim.g.vscode_style = "dark"
 vim.g.tokyonight_style = "night"
@@ -61,6 +65,7 @@ require('lualine').setup {
     -- theme = 'vscode',
     -- theme = 'gruvbox-material',
     theme = 'tokyonight',
+    icons_enabled = false,
     -- component_separators = { left = '\\', right = '/'},
     component_separators = { left = '||', right = '|'},
     -- Those separators only work on gnome-terminal so far.
@@ -69,12 +74,12 @@ require('lualine').setup {
   }
 }
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+-- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+-- for type, icon in pairs(signs) do
+--   local hl = "DiagnosticSign" .. type
+--   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end
 
 -- vim.diagnostic.config({
 --   virtual_text = true,

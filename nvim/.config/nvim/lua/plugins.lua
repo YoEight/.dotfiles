@@ -31,7 +31,7 @@ return require('packer').startup(
         use 'hrsh7th/nvim-cmp'
         use 'L3MON4D3/LuaSnip'
         use 'saadparwaiz1/cmp_luasnip'
-        use 'kyazdani42/nvim-tree.lua'
+        -- use 'kyazdani42/nvim-tree.lua'
         use 'tpope/vim-commentary'
         use 'tpope/vim-fugitive'
         -- use 'mfussenegger/nvim-jdtls'
@@ -39,7 +39,7 @@ return require('packer').startup(
         use 'ntpeters/vim-better-whitespace'
 
         -- UI
-        use 'kyazdani42/nvim-web-devicons'
+        -- use 'kyazdani42/nvim-web-devicons'
         use 'akinsho/toggleterm.nvim'
         use 'lukas-reineke/indent-blankline.nvim'
         use 'onsails/lspkind-nvim'
