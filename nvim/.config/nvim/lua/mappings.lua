@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 local vimp = require('vimp')
 
 -- telescope
+require('telescope').setup {}
 local telescope = require('telescope.builtin')
 vimp.nnoremap('<leader>ff', telescope.find_files)
 vimp.nnoremap('<leader>fg', telescope.git_files)
@@ -10,8 +11,8 @@ vimp.nnoremap('<leader>fb', telescope.buffers)
 vimp.nnoremap('<leader>fh', telescope.help_tags)
 vimp.nnoremap('<leader>fcr', telescope.lsp_references)
 vimp.nnoremap('<leader>fcs', telescope.lsp_dynamic_workspace_symbols)
-vimp.nnoremap('<leader>fcd', telescope.lsp_workspace_diagnostics)
-vimp.nnoremap('<leader>ft', telescope.treesitter)
+-- vimp.nnoremap('<leader>fcd', telescope.lsp_workspace_diagnostics)
+-- vimp.nnoremap('<leader>ft', telescope.treesitter)
 
 -- CMP
 local lspkind = require('lspkind')

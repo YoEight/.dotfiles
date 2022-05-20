@@ -5,7 +5,7 @@ set ReplaceWithRegister
 set argtextobj
 set showmode
 set incsearch
-set rnu
+" set rnu
 set visualbell
 set noerrorbells
 
