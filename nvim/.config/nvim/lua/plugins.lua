@@ -16,7 +16,7 @@ return require('packer').startup(
         }
 
         -- Companion to help writing my vim configuration scripts.
-        use 'svermeulen/vimpeccable'
+        -- use 'svermeulen/vimpeccable'
         use 'rafcamlet/nvim-luapad'
 
         use {

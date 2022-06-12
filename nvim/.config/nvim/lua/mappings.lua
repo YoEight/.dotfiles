@@ -1,18 +1,15 @@
 vim.g.mapleader = " "
 
-local vimp = require('vimp')
-
 -- telescope
-require('telescope').setup {}
-local telescope = require('telescope.builtin')
-vimp.nnoremap('<leader>ff', telescope.find_files)
-vimp.nnoremap('<leader>fg', telescope.git_files)
-vimp.nnoremap('<leader>fb', telescope.buffers)
-vimp.nnoremap('<leader>fh', telescope.help_tags)
-vimp.nnoremap('<leader>fcr', telescope.lsp_references)
-vimp.nnoremap('<leader>fcs', telescope.lsp_dynamic_workspace_symbols)
--- vimp.nnoremap('<leader>fcd', telescope.lsp_workspace_diagnostics)
--- vimp.nnoremap('<leader>ft', telescope.treesitter)
+local options = { noremap = true }
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope git_files<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>fcr', '<cmd>Telescope lsp_references<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>fcs', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>fcd', '<cmd>Telescope lsp_workspace_diagnostics<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', options)
 
 -- CMP
 local lspkind = require('lspkind')
@@ -89,23 +86,23 @@ end
 
 
 -- Windows
-vimp.nnoremap('<leader>ww', ':wincmd w<cr>')
-vimp.nnoremap('<leader>wj', ':wincmd j<cr>')
-vimp.nnoremap('<leader>wh', ':wincmd h<cr>')
-vimp.nnoremap('<leader>wk', ':wincmd k<cr>')
-vimp.nnoremap('<leader>wl', ':wincmd l<cr>')
-vimp.nnoremap('<leader>wJ', ':wincmd J<cr>')
-vimp.nnoremap('<leader>wK', ':wincmd K<cr>')
-vimp.nnoremap('<leader>wH', ':wincmd H<cr>')
-vimp.nnoremap('<leader>wL', ':wincmd L<cr>')
-vimp.nnoremap('<leader>wv', ':vsplit<cr>')
-vimp.nnoremap('<leader>ws', ':split<cr>')
-vimp.nnoremap('<leader>w<', ':vert res -10<cr>')
-vimp.nnoremap('<leader>w>', ':vert res +10<cr>')
-vimp.nnoremap('<leader>w=', ':wincmd =<cr>')
-vimp.nnoremap('<leader>w-', ':res -10<cr>')
-vimp.nnoremap('<leader>w+', ':res +10<cr>')
-vimp.nnoremap('<leader>wc', ':wincmd c<cr>')
+vim.api.nvim_set_keymap('n', '<leader>ww', ':wincmd w<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wj', ':wincmd j<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wh', ':wincmd h<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wk', ':wincmd k<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wl', ':wincmd l<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wJ', ':wincmd J<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wK', ':wincmd K<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wH', ':wincmd H<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wL', ':wincmd L<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wv', ':vsplit<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>ws', ':split<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>w<', ':vert res -10<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>w>', ':vert res +10<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>w=', ':wincmd =<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>w-', ':res -10<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>w+', ':res +10<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>wc', ':wincmd c<cr>', options)
 
 -- Terminal
 -- vimp.nnoremap('<leader>`', ':20split term://zsh<cr>')
@@ -134,6 +131,6 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- Tree
-vimp.nnoremap('<C-n>', ':NvimTreeToggle<cr>')
-vimp.nnoremap('<leader>r', ':NvimTreeRefresh<cr>')
-vimp.nnoremap('<leader>n', ':NvimTreeFindFile<cr>')
+vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<cr>', options)
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<cr>', options)
