@@ -16,9 +16,10 @@ vim.o.showmode = false
 vim.o.wildmode = 'list:longest' -- Command-line completion mode
 vim.o.showmatch = true
 vim.o.signcolumn = 'yes'
+vim.o.clipboard = 'unnamedplus'
 -- vim.wo.list = true -- Show some invisible characters (tabs)
 vim.wo.number = true -- Print line number
-vim.wo.relativenumber = true -- Relative line numbers
+vim.wo.relativenumber = false -- Relative line numbers
 vim.wo.wrap = false -- Disable line wrap
 vim.wo.cursorline = true -- Enable highlighting of the current line
 

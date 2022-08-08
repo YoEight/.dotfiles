@@ -44,7 +44,7 @@ return require('packer').startup(
         use 'lukas-reineke/indent-blankline.nvim'
         use 'onsails/lspkind-nvim'
         -- use 'Mofiqul/vscode.nvim'
-        use 'sainnhe/gruvbox-material'
+        -- use 'sainnhe/gruvbox-material'
         use 'hoob3rt/lualine.nvim'
         use 'folke/tokyonight.nvim'
 

@@ -134,3 +134,7 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<cr>', options)
 vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<cr>', options)
 vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile<cr>', options)
+
+-- Clipboad
+vim.api.nvim_set_keymap('n', '<leader>y', '+y', options)
+vim.api.nvim_set_keymap('n', '<leader>p', '+p', options)
