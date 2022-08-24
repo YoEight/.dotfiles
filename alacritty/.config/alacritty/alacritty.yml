@@ -118,7 +118,7 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: PragmataPro Mono
-    family: FuraMono Nerd Font # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
+    family: Victor Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
 
     # The `style` can be specified to pick a specific face.
     style: Medium
@@ -157,7 +157,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 10.0
+  size: 12.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
