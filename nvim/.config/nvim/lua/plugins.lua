@@ -38,6 +38,7 @@ return require('packer').startup(
         -- use 'mfussenegger/nvim-jdtls'
 
         use 'ntpeters/vim-better-whitespace'
+        use 'jiangmiao/auto-pairs'
 
         -- UI
         use 'kyazdani42/nvim-web-devicons'
