@@ -55,7 +55,7 @@ require('nvim-tree').setup {
 }
 
 vim.g.vscode_style = "dark"
-vim.g.tokyonight_style = "night"
+vim.g.tokyonight_style = "day"
 vim.g.tokyonight_italic_style = false
 vim.g.tokyonight_italic_keywords = false
 -- vim.g.gruvbox_material_enable_italic = true
