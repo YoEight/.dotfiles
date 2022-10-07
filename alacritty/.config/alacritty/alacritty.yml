@@ -9,7 +9,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
-  - ~/.config/alacritty/alacritty_tokyonight_night.yml
+  - ~/.config/alacritty/alacritty_tokyonight_day.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -118,32 +118,32 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: PragmataPro Mono
-    family: Victor Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
+    family: VictorMono Nerd Font Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
 
     # The `style` can be specified to pick a specific face.
-    style: Medium
+    style: Semibold
 
   # Bold font face
-  #bold:
+  # bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    # family: VictorMono Nerd Font Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    # style: ExtraBold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    family: VictorMono Nerd Font Mono # Inconsolata # Go Mono # MonoLisa # IBM Plex Mono # Iosevka Term
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Semibold Italic
 
   # Bold italic font face
   #bold_italic:

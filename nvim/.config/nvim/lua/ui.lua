@@ -54,23 +54,58 @@ require('nvim-tree').setup {
   }
 }
 
+require("tokyonight").setup({
+  style = "day",
+  styles = {
+    keywords = "NONE",
+    strings = "italic",
+  }
+})
+
 vim.g.vscode_style = "dark"
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_style = false
-vim.g.tokyonight_italic_keywords = false
+-- vim.g.tokyonight_style = "day"
+-- vim.g.tokyonight_italic_style = false
+-- vim.g.tokyonight_italic_keywords = false
+vim.g.catppuccin_flavour = "latte"
 -- vim.g.gruvbox_material_enable_italic = true
+--
+require("catppuccin").setup({
+  transparent_background = false,
+  term_colors = true,
+  styles = {
+    comments = { "italic" },
+    strings = { "italic" },
+    variables = {},
+    conditionals = {},
+    properties = {},
+    types = {},
+    keywords = {},
+    operators = {},
+    functions = {},
+    imports = {},
+  },
+  integrations = {
+    gitgutter = true,
+    cmp = true,
+    nvimtree = true,
+    treesitter = true,
+    telescope = true,
+  }
+})
 
 require('lualine').setup {
   options = {
     -- theme = 'vscode',
     -- theme = 'gruvbox-material',
+    -- theme = 'tokyonight',
+    -- theme = 'catppuccin',
     theme = 'tokyonight',
     icons_enabled = true,
     -- component_separators = { left = '\\', right = '/'},
-    component_separators = { left = '||', right = '|'},
+    -- component_separators = { left = '||', right = '|'},
     -- Those separators only work on gnome-terminal so far.
     -- section_separators = {left = '◣', right = '◢'},
-    section_separators = {left = '', right = ''},
+    -- section_separators = {left = '', right = ''},
   }
 }
 
@@ -105,6 +140,8 @@ require('indent_blankline').setup {
 
 -- highlight NvimTreeFolderIcon guibg=blue
 -- colorscheme gruvbox-material
+-- colorscheme tokyonight
+-- colorscheme catppuccin
 vim.cmd [[
   colorscheme tokyonight
 ]]

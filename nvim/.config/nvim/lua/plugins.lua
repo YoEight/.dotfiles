@@ -49,6 +49,7 @@ return require('packer').startup(
         -- use 'sainnhe/gruvbox-material'
         use 'hoob3rt/lualine.nvim'
         use 'folke/tokyonight.nvim'
+        use { "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" }
 
         if packer_bootstrap then
             require('packer').sync()
