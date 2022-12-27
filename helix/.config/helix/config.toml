@@ -2,3 +2,10 @@ theme = "fleet_dark"
 
 [editor]
 true-color = true
+cursorline = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.indent-guides]
+render = true
