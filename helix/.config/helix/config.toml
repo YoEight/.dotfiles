@@ -1,1 +1,4 @@
 theme = "fleet_dark"
+
+[editor]
+true-color = true
