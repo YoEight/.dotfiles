@@ -11,7 +11,7 @@ function before_install() {
 
 before_install
 
-languages=(rust csharp)
+languages=(rust csharp go)
 
 for language in ${languages[@]}; do
   source ./scripts/configure-$language.sh
