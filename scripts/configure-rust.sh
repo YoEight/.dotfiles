@@ -1,7 +1,5 @@
 #!/bin/bash
 
-RUST_ANALYZER_VERSION="2022-12-26"
-
 function install:rust() {
   if command -v cargo &> /dev/null
   then
