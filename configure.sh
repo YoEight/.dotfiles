@@ -1,9 +1,12 @@
 #!/bin/bash
 
+set -e
+
 GO_VERSION="1.19"
 RUST_ANALYZER_VERSION="2022-12-26"
 
-LSP_BIN_DIRECTORY=$HOME/lsps/bin
+LSP_DIRECTORY=$HOME/lsps
+LSP_BIN_DIRECTORY=$LSP_DIRECTORY/bin
 
 function before_install() {
   mkdir -p $LSP_BIN_DIRECTORY
@@ -19,7 +22,7 @@ function install:go:lsp() {
 
 before_install
 
-languages=(rust)
+languages=(rust csharp)
 
 for language in ${languages[@]}; do
   source ./scripts/configure-$language.sh
