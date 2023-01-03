@@ -14,7 +14,7 @@ before_install
 languages=(rust csharp go)
 
 for language in ${languages[@]}; do
-  source ./scripts/configure-$language.sh
+  source ./scripts/programming/$language.sh
 
   echo "Installing $language..."
   $"install:$language"
