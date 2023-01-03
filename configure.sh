@@ -5,6 +5,8 @@ set -e
 LSP_DIRECTORY=$HOME/lsps
 LSP_BIN_DIRECTORY=$LSP_DIRECTORY/bin
 
+source ./scripts/etc/systeminfo.sh
+
 function before_install() {
   mkdir -p $LSP_BIN_DIRECTORY
 }
