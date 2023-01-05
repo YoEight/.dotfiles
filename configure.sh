@@ -13,7 +13,7 @@ function before_install() {
 
 before_install
 
-languages=(rust csharp go)
+languages=(rust csharp go java)
 
 for language in ${languages[@]}; do
   source ./scripts/programming/$language.sh
