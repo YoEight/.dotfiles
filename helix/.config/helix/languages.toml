@@ -1,3 +1,0 @@
-[[language]]
-name = "java"
-roots = ["build.gradle"]

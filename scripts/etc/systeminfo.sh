@@ -23,3 +23,6 @@ else
     OS=$(uname -s)
     VER=$(uname -r)
 fi
+
+OS="${OS,,}"
+VERSION="${VERSION,,}"

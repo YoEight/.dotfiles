@@ -12,7 +12,7 @@ function install:java() {
   fi
 
   case $OS in
-    Ubuntu)
+    ubuntu)
       sudo apt install -y \
         openjdk-$JAVA_VERSION-jdk \
         openjdk-$JAVA_VERSION-jre \
