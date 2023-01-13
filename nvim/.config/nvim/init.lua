@@ -383,13 +383,23 @@ end
 
 local servers = {
   "rust_analyzer",
-  "sumneko_lua"
+  "sumneko_lua",
+  "gopls",
+  "jdtls",
+  "omnisharp",
 }
 
 for idx in pairs(servers) do
-  require('lspconfig')[servers[idx]].setup{
-    on_attach = on_attach,
-  }
+  local conf = {}
+  local name = servers[idx]
+
+  conf.on_attach = on_attach
+
+  if (name == "omnisharp") then
+    conf.cmd = { 'OmniSharp' }
+  end
+
+  require('lspconfig')[name].setup(conf)
 end
 
 -- Setup neovim lua configuration
