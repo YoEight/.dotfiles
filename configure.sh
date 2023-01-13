@@ -7,7 +7,7 @@ LSP_BIN_DIRECTORY=$LSP_DIRECTORY/bin
 
 source ./scripts/etc/systeminfo.sh
 
-echo "$OS"
+echo "$OS: $VER"
 
 function before_install() {
   mkdir -p "$LSP_BIN_DIRECTORY"
@@ -15,7 +15,7 @@ function before_install() {
 
 before_install
 
-languages=(rust csharp go java)
+languages=(rust csharp go java lua)
 
 for language in "${languages[@]}"; do
   source ./scripts/programming/$language.sh

@@ -17,6 +17,7 @@ function install:go:lsp() {
   if ! command -v gopls &> /dev/null
   then
     go install golang.org/x/tools/gopls@latest  
+    ln -s $HOME/go/bin/gopls $LSP_BIN_DIRECTORY/gopls
   else
     echo "Gopls is already installed"
   fi
@@ -24,6 +25,7 @@ function install:go:lsp() {
   if ! command -v dlv &> /dev/null
   then
     go install github.com/go-delve/delve/cmd/dlv@latest
+    ln -s $HOME/go/bin/dlv $LSP_BIN_DIRECTORY/dlv
   else
     echo "Dlv is already installed"
   fi

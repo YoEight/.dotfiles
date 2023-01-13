@@ -23,7 +23,7 @@ function install:java() {
 
     *)
       echo "Unsupported platform when installing Java"
-      return 1
+      return 0
       ;;
   esac
 }
