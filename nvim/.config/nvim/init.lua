@@ -59,6 +59,13 @@ require('packer').startup(function(use)
   -- File tree
   use 'nvim-tree/nvim-tree.lua'
 
+  -- Toggle term
+  use { 'akinsho/toggleterm.nvim', tag = '*', config = function()
+    require("toggleterm").setup({
+      open_mapping = [[<C-\>]],
+    })
+  end}
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -131,6 +138,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- Highlight the current line.
 vim.wo.cursorline = true
 
+-- Line wrapping
+vim.wo.wrap = false
+
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -170,6 +180,9 @@ vim.keymap.set('n', '<leader>w=', ':wincmd =<cr>')
 vim.keymap.set('n', '<leader>w-', ':res -10<cr>')
 vim.keymap.set('n', '<leader>w+', ':res +10<cr>')
 vim.keymap.set('n', '<leader>wc', ':wincmd c<cr>')
+
+-- Terminal Toggle
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
