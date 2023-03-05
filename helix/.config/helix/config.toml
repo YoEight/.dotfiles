@@ -3,6 +3,8 @@ theme = "boo_berry"
 [editor]
 true-color = true
 cursorline = true
+completion-trigger-len = 1
+idle-timeout = 50
 
 [editor.cursor-shape]
 insert = "bar"
