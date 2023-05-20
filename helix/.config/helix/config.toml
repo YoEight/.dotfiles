@@ -1,13 +1,15 @@
 theme = "boo_berry"
 
 [editor]
-true-color = true
 cursorline = true
-completion-trigger-len = 1
-idle-timeout = 50
+idle-timeout = 0
+color-modes = true
+true-color = true
+terminal.command = "gnome-terminal"
 
 [editor.cursor-shape]
 insert = "bar"
+select = "underline"
 
 [editor.indent-guides]
 render = true
