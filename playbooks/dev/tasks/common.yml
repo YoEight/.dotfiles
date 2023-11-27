@@ -1,0 +1,20 @@
+- name: Ensure common tools are installed
+  become: true
+  ansible.builtin.package:
+    name:
+      - git
+      - gpg
+      - protobuf-compiler
+      - build-essential
+      - curl
+
+      # Java related packages
+      - openjdk-11-source
+      - openjdk-11-jdk
+      - openjdk-11-dbg
+      - openjdk-11-doc
+      # -- 
+      
+      - golang
+    state: present
+

@@ -1,0 +1,6 @@
+---
+- name: Install common packages
+  import_tasks: common.yml
+
+- name: Install Rust dev environment
+  import_tasks: rust.yml
