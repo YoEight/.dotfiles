@@ -38,7 +38,7 @@
     jdk_map: {}
 
 - name: Gather JDKs location
-  ansible.builtin.shell: "update-alternatives --list java | grep {{ item }}"
+  ansible.builtin.shell: "update-alternatives --list java | grep {{ item }} | xargs dirname | xargs dirname"
   register: jdk_locations
   loop: "{{ jdks }}"
 
