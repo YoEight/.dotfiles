@@ -31,10 +31,6 @@
   register: jdk_locations
   loop: "{{ jdks }}"
 
-# - name: Display zipped list
-#   debug:
-#     var: jdk_locations.results
-#
 - name: Map a JDK version to its location
   set_fact:
     jdk_map: "{{ jdk_map | combine({ item: jdk_locations.results[idx].stdout }) }}"
