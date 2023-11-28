@@ -1,3 +1,14 @@
+- name: Include Java vars
+  ansible.builtin.include_vars:
+    file: java.yml
+
+- name: Ensure Java environment directories are created
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ java_directories }}"
+
 - name: Install OpenJDKs on Debian-based system
   when: ansible_os_family == 'Debian'
   become: true
@@ -44,4 +55,42 @@
     line: "export JDK{{ item.key }}_HOME={{ item.value }}"
     state: present
   loop: "{{ jdk_map | dict2items }}"
+
+- name: Download JDT Language Server
+  ansible.builtin.get_url:
+    url: "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/{{ jdtls.version }}/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz"
+    dest: "/tmp/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz"
+
+- name: Get JDT Language Server checksum
+  register: jdtls_stat
+  ansible.builtin.stat:
+    path: "/tmp/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz"
+    get_checksum: yes
+    checksum_algorithm: sha256
+
+- name: Download JDT Language Server expected SHA signature
+  ansible.builtin.get_url:
+    url: "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/{{ jdtls.version }}/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz.sha256"
+    dest: "/tmp/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz.sha256"
+
+- name: Read JDT Language Server expected SHA signature
+  register: jdtls_sha256
+  ansible.builtin.shell: "cat /tmp/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz.sha256"
+
+- name: Compare JDT Language server checksums
+  fail:
+    msg: "Checksum does not match"
+  when: jdtls_sha256.stdout != jdtls_stat.stat.checksum
+
+- name: Unpack JDT Language Server
+  ansible.builtin.unarchive:
+    src: "/tmp/jdt-language-server-{{ jdtls.version }}-{{ jdtls.timestamp }}.tar.gz"
+    dest: "{{ jdtls_dir }}"
+    remote_src: yes
+
+- name: Set up JTD Language Server location as environment variables
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export JDTLS_HOME={{ jdtls_dir }}"
+    state: present
 

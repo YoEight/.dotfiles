@@ -1,0 +1,4 @@
+jdtls_dir: "{{ lsps_dir }}/jdt"
+java_directories:
+  - "{{ jdtls_dir }}"
+

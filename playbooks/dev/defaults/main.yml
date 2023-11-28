@@ -1,2 +1,3 @@
 ---
-# defaults file for dev
+tools_dir: ~/tools
+lsps_dir: "{{ tools_dir }}/tools"
