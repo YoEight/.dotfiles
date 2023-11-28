@@ -88,9 +88,39 @@
     dest: "{{ jdtls_dir }}"
     remote_src: yes
 
-- name: Set up JTD Language Server location as environment variables
+- name: Get Equinox launcher location
+  register: equinox_launcher
+  ansible.builtin.shell: "ls {{ jdtls_dir }}/plugins/org.eclipse.equinox.launcher_*.jar"
+
+- name: Set up JTD Language Server locations as environment variables
   ansible.builtin.lineinfile:
     path: ~/.profile
-    line: "export JDTLS_HOME={{ jdtls_dir }}"
+    line: "export {{ item.name }}={{ item.value }}"
+    state: present
+  loop: "{{ jdtls_vars }}"
+  vars:
+    jdtls_vars:
+      - name: JDTLS_HOME
+        value: "{{ jdtls_dir }}"
+
+      - name: JDTLS_LAUNCHER
+        value: "{{ equinox_launcher.stdout }}"
+
+- name: Clone Java Debug repo
+  ansible.builtin.git:
+    repo: https://github.com/microsoft/java-debug.git
+    dest: "{{ lsps_dir }}/java-debug"
+    clone: yes
+    update: yes
+
+- name: Build Java Debug
+  ansible.builtin.shell:
+    chdir: "{{ lsps_dir }}/java-debug"
+    cmd: ./mvnw clean install
+
+- name: Set up Java Debug locations as environment variables
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export JAVA_DEBUG_HOME={{ lsps_dir }}/java-debug"
     state: present
 
