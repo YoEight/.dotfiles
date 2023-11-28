@@ -8,6 +8,7 @@
       - stow
       - curl
       - golang
+      - npm
     state: present
 
 - name: Install Specific Debian-based dependencies

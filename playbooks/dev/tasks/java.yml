@@ -124,3 +124,21 @@
     line: "export JAVA_DEBUG_HOME={{ lsps_dir }}/java-debug"
     state: present
 
+- name: Clone vscode-java-test
+  ansible.builtin.git:
+    repo: https://github.com/microsoft/vscode-java-test.git
+    dest: "{{ lsps_dir }}/vscode-java-test"
+    clone: yes
+    update: yes
+
+- name: Build vscode-java-test
+  ansible.builtin.shell:
+    chdir: "{{ lsps_dir }}/vscode-java-test"
+    cmd: npm install && npm run build-plugin
+
+- name: Set up vscode-java-test locations as environment variables
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export VSCODE_JAVA_TEST_HOME={{ lsps_dir }}/vscode-java-test"
+    state: present
+
