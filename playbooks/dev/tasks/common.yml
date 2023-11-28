@@ -16,5 +16,6 @@
   ansible.builtin.apt:
     name:
       - build-essential
+      - libfuse-dev
     state: present
 
