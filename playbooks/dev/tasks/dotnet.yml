@@ -1,3 +1,14 @@
+- name: Include .NET vars
+  ansible.builtin.include_vars:
+    file: dotnet.yml
+
+- name: Ensure .NET environment directories are created
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ dotnet_directories }}"
+
 - name: Check if dotnet command-line tool is installed
   ansible.builtin.shell: command -v cargo
   register: dotnet_exists
@@ -25,3 +36,19 @@
     line: 'export PATH="$PATH:$HOME/.dotnet"'
     state: present
 
+- name: Get Omnisharp
+  ansible.builtin.get_url:
+    url: "https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v{{ omnisharp.version }}/omnisharp-linux-x64-net6.0.tar.gz"
+    dest: /tmp/omnisharp-linux-x64-net6.0.tar.gz
+
+- name: Unpack Omnisharp Language Server
+  ansible.builtin.unarchive:
+    src: /tmp/omnisharp-linux-x64-net6.0.tar.gz
+    dest: "{{ omnisharp_dir }}"
+    remote_src: yes
+
+- name: Set up Omnisharp Language Server locations as environment variables
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export OMNISHARP_HOME={{ omnisharp_dir }}"
+    state: present

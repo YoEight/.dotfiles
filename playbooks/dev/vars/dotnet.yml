@@ -1,0 +1,12 @@
+dotnet_frameworks:
+  - 6.0
+  - 7.0
+  - 8.0
+
+omnisharp:
+  version: 1.39.10
+
+omnisharp_dir: "{{ lsps_dir }}/omnisharp"
+
+dotnet_directories:
+  - "{{ omnisharp_dir }}"

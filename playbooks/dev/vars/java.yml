@@ -1,4 +1,12 @@
+jdks:
+  - 11
+  - 17
+
 jdtls_dir: "{{ lsps_dir }}/jdt"
+
 java_directories:
   - "{{ jdtls_dir }}"
 
+jdtls:
+  version: 1.29.0
+  timestamp: 202310261436
