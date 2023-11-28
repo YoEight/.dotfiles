@@ -5,16 +5,16 @@
       - git
       - gpg
       - protobuf-compiler
-      - build-essential
+      - stow
       - curl
-
-      # Java related packages
-      - openjdk-11-source
-      - openjdk-11-jdk
-      - openjdk-11-dbg
-      - openjdk-11-doc
-      # -- 
-      
       - golang
+    state: present
+
+- name: Install Specific Debian-based dependencies
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.apt:
+    name:
+      - build-essential
     state: present
 

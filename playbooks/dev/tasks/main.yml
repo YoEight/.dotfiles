@@ -4,3 +4,9 @@
 
 - name: Install Rust dev environment
   import_tasks: rust.yml
+
+- name: Install Java dev environment
+  import_tasks: java.yml
+
+- name: Install .NET dev environment
+  import_tasks: dotnet.yml

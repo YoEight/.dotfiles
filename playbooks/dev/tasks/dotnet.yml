@@ -1,0 +1,27 @@
+- name: Check if dotnet command-line tool is installed
+  ansible.builtin.shell: command -v cargo
+  register: dotnet_exists
+  ignore_errors: yes
+
+- name: Download dotnet-install.sh script
+  when: dotnet_exists is failed
+  ansible.builtin.get_url:
+    url: https://dot.net/v1/dotnet-install.sh
+    dest: /tmp/dotnet-install.sh
+    mode: '0755'
+    force: 'yes'
+
+- name: Install .NET frameworks
+  when: dotnet_exists is failed
+  ansible.builtin.shell: "/tmp/dotnet-install.sh -c {{ item }}"
+  loop: "{{ dotnet_frameworks }}"
+  tags:
+    - dotnet
+
+- name: Make sure dotnet tools set in PATH
+  when: dotnet_exists is failed
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: 'export PATH="$PATH:$HOME/.dotnet"'
+    state: present
+

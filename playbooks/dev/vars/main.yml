@@ -1,2 +1,9 @@
 ---
-# vars file for dev
+jdks:
+  - 11
+  - 17
+
+dotnet_frameworks:
+  - 6.0
+  - 7.0
+  - 8.0

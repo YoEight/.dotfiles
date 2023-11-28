@@ -1,0 +1,52 @@
+- name: Install OpenJDKs on Debian-based system
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.apt:
+    name:
+      - "openjdk-{{ item }}-source"
+      - "openjdk-{{ item }}-jdk"
+      - "openjdk-{{ item }}-dbg"
+      - "openjdk-{{ item }}-doc"
+    state: present
+  loop: "{{ jdks }}"
+
+- name: Install OpenJDKs on RedHat-based system
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.apt:
+    name:
+      - "java-{{ item }}-openjdk"
+      - "java-{{ item }}-openjdk-devel"
+      - "java-{{ item }}-openjdk-src"
+      - "java-{{ item }}-openjdk-javadoc"
+    state: present
+  loop: "{{ jdks }}"
+
+- name: Initialize JDK maps
+  set_fact:
+    jdk_map: {}
+
+- name: Gather JDKs location
+  ansible.builtin.shell: "update-alternatives --list java | grep {{ item }}"
+  register: jdk_locations
+  loop: "{{ jdks }}"
+
+# - name: Display zipped list
+#   debug:
+#     var: jdk_locations.results
+#
+- name: Map a JDK version to its location
+  set_fact:
+    jdk_map: "{{ jdk_map | combine({ item: jdk_locations.results[idx].stdout }) }}"
+  loop: "{{ jdks }}"
+  loop_control:
+    index_var: idx
+
+
+- name: Set up JDK locations as environment variables
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export JDK{{ item.key }}_HOME={{ item.value }}"
+    state: present
+  loop: "{{ jdk_map | dict2items }}"
+
