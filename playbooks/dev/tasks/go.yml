@@ -1,0 +1,17 @@
+---
+- name: Install Go
+  become: true
+  ansible.builtin.package:
+    name:
+      - golang
+    state: present
+
+- name: Install Gopls
+  ansible.builtin.shell:
+    cmd: go install golang.org/x/tools/gopls@latest
+
+- name: Make sure Gopls is in PATH
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export PATH=$PATH:$HOME/go/bin"
+    state: present
