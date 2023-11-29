@@ -10,7 +10,7 @@
     dest: /tmp/sh.rustup.rs
     mode: '0755'
     force: 'yes'
-    tags:
+  tags:
       - rust
 
 - name: Install rust/cargo
@@ -28,7 +28,9 @@
   when: rust_lsp_exists is failed
   ansible.builtin.shell: |
     source $HOME/.cargo/env
-    rustup component and rust-analyzer
+    rustup component add rust-analyzer
+  args:
+    executable: /bin/bash
   
 - name: Make sure rust/lsp location environment variable is set
   ansible.builtin.lineinfile:

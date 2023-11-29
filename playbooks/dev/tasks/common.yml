@@ -20,3 +20,11 @@
       - libfuse-dev
     state: present
 
+- name: Install Specific RedHat-based dependencies
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.yum:
+    name:
+      - fuse
+    state: present
+

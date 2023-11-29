@@ -1,4 +1,12 @@
 ---
+- name: Ensure common directories are created
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ local_app_dir }}"
+
 - name: Install common packages
   import_tasks: common.yml
 
@@ -13,3 +21,13 @@
 
 - name: Install Go dev environment
   import_tasks: go.yml
+
+- name: Install Neovim
+  import_tasks: neovim.yml
+
+- name: Make sure the local app directory is in PATH
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export PATH=$PATH:{{ local_app_dir }}"
+    state: present
+

@@ -24,7 +24,7 @@
 - name: Install OpenJDKs on RedHat-based system
   when: ansible_os_family == 'RedHat'
   become: true
-  ansible.builtin.apt:
+  ansible.builtin.yum:
     name:
       - "java-{{ item }}-openjdk"
       - "java-{{ item }}-openjdk-devel"
@@ -37,10 +37,18 @@
   set_fact:
     jdk_map: {}
 
-- name: Gather JDKs location
+- name: Gather JDKs location on Debian-based systems
+  when: ansible_os_family == 'Debian'
   ansible.builtin.shell: "update-alternatives --list java | grep {{ item }} | xargs dirname | xargs dirname"
   register: jdk_locations
   loop: "{{ jdks }}"
+
+- name: Gather JDKs location on RedHat-based systems
+  when: ansible_os_family == 'RedHat'
+  ansible.builtin.shell: "update-alternatives --display java | grep -v -e '^ follower' -e 'Current' -e 'link' | grep {{ item }} | awk '{print $1}' | xargs dirname | xargs dirname"
+  register: jdk_locations
+  loop: "{{ jdks }}"
+
 
 - name: Map a JDK version to its location
   set_fact:
@@ -117,6 +125,8 @@
   ansible.builtin.shell:
     chdir: "{{ lsps_dir }}/java-debug"
     cmd: ./mvnw clean install
+  environment:
+    JAVA_HOME: "{{ jdk_map[17] }}"
 
 - name: Set up Java Debug locations as environment variables
   ansible.builtin.lineinfile:
@@ -135,6 +145,8 @@
   ansible.builtin.shell:
     chdir: "{{ lsps_dir }}/vscode-java-test"
     cmd: npm install && npm run build-plugin
+  environment:
+    JAVA_HOME: "{{ jdk_map[17] }}"
 
 - name: Set up vscode-java-test locations as environment variables
   ansible.builtin.lineinfile:

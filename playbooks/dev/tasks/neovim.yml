@@ -1,0 +1,31 @@
+- name: Download latest stable Neovim version
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+    dest: /tmp/nvim.appimage
+    mode: '0755'
+    force: 'yes'
+
+- name: Download latest stable Neovim SHA signature
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage.sha256sum
+    dest: /tmp/nvim.appimage.sha256sum
+
+- name: Read latest stable Neovim expected SHA signature
+  register: neovim_sha256
+  ansible.builtin.shell: cat /tmp/nvim.appimage.sha256sum | awk '{print $1}'
+
+- name: Get Neovim checksum
+  register: neovim_stat
+  ansible.builtin.stat:
+    path: /tmp/nvim.appimage
+    get_checksum: yes
+    checksum_algorithm: sha256
+
+- name: Compare Neovim checksums
+  fail:
+    msg: "Checksum does not match"
+  when: neovim_sha256.stdout != neovim_stat.stat.checksum
+
+- name: Move Neovim binary to local binary directory
+  ansible.builtin.shell: "mv /tmp/nvim.appimage {{ local_app_dir }}/nvim"
+
