@@ -40,15 +40,22 @@
 - name: Gather JDKs location on Debian-based systems
   when: ansible_os_family == 'Debian'
   ansible.builtin.shell: "update-alternatives --list java | grep {{ item }} | xargs dirname | xargs dirname"
-  register: jdk_locations
+  register: jdk_locations_Debian
   loop: "{{ jdks }}"
 
 - name: Gather JDKs location on RedHat-based systems
   when: ansible_os_family == 'RedHat'
   ansible.builtin.shell: "update-alternatives --display java | grep -v -e '^ follower' -e 'Current' -e 'link' | grep {{ item }} | awk '{print $1}' | xargs dirname | xargs dirname"
-  register: jdk_locations
+  register: jdk_locations_RedHat
   loop: "{{ jdks }}"
 
+- name: Flatten JDK locations
+  ansible.builtin.set_fact:
+    jdk_locations: "{{ item }}"
+  loop:
+    - "{{ jdk_locations_Debian }}"
+    - "{{ jdk_locations_RedHat }}"
+  when: not item.skipped
 
 - name: Map a JDK version to its location
   set_fact:
