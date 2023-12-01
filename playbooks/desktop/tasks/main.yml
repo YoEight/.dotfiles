@@ -79,3 +79,6 @@
 
 - name: Install Fonts
   import_tasks: fonts.yml
+
+- name: Install Nvidia drivers
+  import_tasks: nvidia.yml
