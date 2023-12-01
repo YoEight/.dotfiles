@@ -76,3 +76,6 @@
   ansible.builtin.yum:
     name: https://zoom.us/client/5.16.10.668/zoom_x86_64.rpm
     state: present
+
+- name: Install Fonts
+  import_tasks: fonts.yml

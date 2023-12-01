@@ -1,2 +1,13 @@
 ---
-# vars file for desktop
+iosevka_version: 27.3.5
+
+iosevka_fonts:
+  src: "https://github.com/be5invis/Iosevka/releases/download/v{{ iosevka_version }}/ttf-iosevka-slab-{{ iosevka_version }}.zip"
+  dir: iosevka
+  include:
+    - iosevka-slab-regular.ttf
+
+fonts_dir: ~/.local/fonts
+
+fonts:
+  - "{{ iosevka_fonts }}"
