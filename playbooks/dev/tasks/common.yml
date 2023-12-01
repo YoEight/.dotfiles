@@ -9,6 +9,7 @@
       - curl
       - golang
       - npm
+      - sudo
     state: present
 
 - name: Install Specific Debian-based dependencies
@@ -18,6 +19,7 @@
     name:
       - build-essential
       - libfuse-dev
+      - xz-utils
     state: present
 
 - name: Install Specific RedHat-based dependencies

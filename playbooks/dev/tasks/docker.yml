@@ -1,0 +1,39 @@
+---
+- name: Set up docker repository on Debian-based systems.
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.script: docker_repo_debian.sh
+  args:
+    executable: /bin/bash
+
+- name: Set up docker repository on RedHat-based systems.
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.script: docker_repo_redhat.sh
+  args:
+    executable: /bin/bash
+
+- name: Install Docker Engine
+  become: true
+  ansible.builtin.package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+
+- name: Install Docker Desktop on Debian-based systems
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.apt:
+    deb: "https://desktop.docker.com/linux/main/amd64/docker-desktop-4.25.2-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64&_gl=1*18zbbpn*_ga*NTUxNjc1NjY1LjE3MDExMzc1MzY.*_ga_XJWPQMJYHQ*MTcwMTM4NjQ4OC4zLjEuMTcwMTM4NjQ5OC41MC4wLjA."
+
+- name: Install Docker Desktop on RedHat-based systems
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.yum:
+    name: "https://desktop.docker.com/linux/main/amd64/docker-desktop-4.25.2-x86_64.rpm?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64&_gl=1*1hkrwcs*_ga*NTUxNjc1NjY1LjE3MDExMzc1MzY.*_ga_XJWPQMJYHQ*MTcwMTM4NjQ4OC4zLjEuMTcwMTM4NjgzMS41Mi4wLjA."
+    # For some reason, Docker doesn't provide signature for this one.
+    disable_gpg_check: true
+    state: present
