@@ -1,0 +1,8 @@
+lua_ls:
+  version: 3.7.3
+
+lua_ls_dir: "{{ lsps_dir }}/lua"
+
+lua_directories:
+  - "{{ lua_ls_dir }}"
+

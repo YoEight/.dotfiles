@@ -22,6 +22,9 @@
 - name: Install Go dev environment
   import_tasks: go.yml
 
+- name: Install Lua dev environment
+  import_tasks: lua.yml
+
 - name: Install Neovim
   import_tasks: neovim.yml
 

@@ -1,0 +1,24 @@
+---
+- name: Include Lua vars
+  ansible.builtin.include_vars:
+    file: lua.yml
+
+- name: Ensure Lua environment directories are created
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ lua_directories }}"
+
+- name: Install Lua language server
+  ansible.builtin.unarchive:
+    src: "https://github.com/LuaLS/lua-language-server/releases/download/{{ lua_ls.version }}/lua-language-server-{{ lua_ls.version }}-linux-x64.tar.gz"
+    dest: "{{ lua_ls_dir }}"
+    remote_src: yes
+
+- name: Set up Lua language server locations as environment variables
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export LUA_LS_HOME={{ lua_ls_dir }}"
+    state: present
+
