@@ -1,0 +1,78 @@
+---
+- name: Install 1password Debian-based systems
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.apt:
+    deb: https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
+
+- name: Download 1password GPG key for RedHat-based systems
+  when: ansible_os_family == 'RedHat'
+  ansible.builtin.get_url:
+    url: https://downloads.1password.com/linux/keys/1password.asc
+    dest: /tmp/1password.asc
+
+- name: Install 1Password GPG key for RedHat-based system
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.shell:
+    cmd: rpm --import /tmp/1password.asc
+    executable: /bin/bash
+
+- name: Install 1password RedHat-based systems
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.yum:
+    name: https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
+    state: present
+
+- name: Install Slack Desktop on Debian-based systems
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.apt:
+    deb: https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-desktop-4.35.126-amd64.deb
+
+- name: Download Slack Desktop GPG signature for RedHat-based systems
+  when: ansible_os_family == 'RedHat'
+  ansible.builtin.get_url:
+    url: https://slack.com/gpg/slack_pubkey_20230710.gpg
+    dest: /tmp/slack_pubkey.gpg
+
+- name: Install Slack Desktop GPG key for RedHat-based system
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.shell:
+    cmd: rpm --import /tmp/slack_pubkey.gpg
+    executable: /bin/bash
+
+- name: Install Slack Desktop on RedHat-based systems
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.yum:
+    name: https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-4.35.126-0.1.el8.x86_64.rpm
+    state: present
+
+- name: Install Zoom on Debian-based system
+  when: ansible_os_family == 'Debian'
+  become: true
+  ansible.builtin.apt:
+    deb: https://zoom.us/client/5.16.10.668/zoom_amd64.deb
+
+- name: Download Zoom GPG key for RedHat-based system
+  when: ansible_os_family == 'RedHat'
+  ansible.builtin.get_url:
+    url: https://zoom.us/linux/download/pubkey?version=5-12-6
+    dest: /tmp/zoom-signing-key.pub
+
+- name: Install Zoom GPG key for RedHat-based system
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.shell:
+    cmd: rpm --import /tmp/zoom-signing-key.pub
+    executable: /bin/bash
+
+- name: Install Zoom on RedHat-based system
+  when: ansible_os_family == 'RedHat'
+  become: true
+  ansible.builtin.yum:
+    name: https://zoom.us/client/5.16.10.668/zoom_x86_64.rpm
+    state: present

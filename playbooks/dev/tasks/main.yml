@@ -10,27 +10,26 @@
 - name: Install common packages
   import_tasks: common.yml
 
-# - name: Install Rust dev environment
-#   import_tasks: rust.yml
-#
-# - name: Install Java dev environment
-#   import_tasks: java.yml
-#
-# - name: Install .NET dev environment
-#   import_tasks: dotnet.yml
-#
-# - name: Install Go dev environment
-#   import_tasks: go.yml
-#
-# - name: Install Neovim
-#   import_tasks: neovim.yml
+- name: Install Rust dev environment
+  import_tasks: rust.yml
+
+- name: Install Java dev environment
+  import_tasks: java.yml
+
+- name: Install .NET dev environment
+  import_tasks: dotnet.yml
+
+- name: Install Go dev environment
+  import_tasks: go.yml
+
+- name: Install Neovim
+  import_tasks: neovim.yml
 
 - name: Install Docker
   import_tasks: docker.yml
 
-# - name: Make sure the local app directory is in PATH
-#   ansible.builtin.lineinfile:
-#     path: ~/.profile
-#     line: "export PATH=$PATH:{{ local_app_dir }}"
-#     state: present
-
+- name: Make sure the local app directory is in PATH
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export PATH=$PATH:{{ local_app_dir }}"
+    state: present

@@ -1,0 +1,6 @@
+---
+- name: Install desktop applications
+  hosts: localhost
+  gather_facts: true
+  roles:
+    - desktop
