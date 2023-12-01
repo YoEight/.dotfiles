@@ -1,7 +1,5 @@
 ---
 - name: Install automatic kmods tools for RedHat-based systems
-  when: ansible_os_family == 'RedHat'
-  become: true
   ansible.builtin.yum:
     name:
       - akmods
@@ -11,21 +9,15 @@
     state: present
 
 - name: Create a self generated key and certificate
-  when: ansible_os_family == 'RedHat'
-  become: true
   ansible.builtin.command:
     cmd: /usr/sbin/kmodgenca --auto
 
 - name: Import self generated key
-  when: ansible_os_family == 'RedHat'
-  become: true
   ansible.builtin.command:
     cmd: mokutil --import /etc/pki/akmods/certs/public_key.der 
     stdin: "qwerty"
 
 - name: Install Nvidia drivers
-  when: ansible_os_family == 'RedHat'
-  become: true
   ansible.builtin.yum:
     name:
       - akmod-nvidia

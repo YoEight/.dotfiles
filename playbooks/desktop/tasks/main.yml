@@ -81,4 +81,6 @@
   import_tasks: fonts.yml
 
 - name: Install Nvidia drivers
+  become: true
+  when: ansible_os_family == 'RedHat'
   import_tasks: nvidia.yml
