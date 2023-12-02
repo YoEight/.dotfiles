@@ -1,3 +1,11 @@
+- name: Ensure Java environment directories are created
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ lsps_dir }}/codelldb"
+
 - name: Check if cargo is installed
   ansible.builtin.shell: command -v cargo
   register: cargo_exists
@@ -34,8 +42,20 @@
   
 - name: Make sure rust/lsp location environment variable is set
   ansible.builtin.lineinfile:
-    path: ~/.bashrc
+    path: ~/.profile
     regexp: '^export RUST_ANALYZER_BIN='
     line: 'export RUST_ANALYZER_BIN={{ rust_lsp_exists.stdout }}'
+    state: present
+
+- name: Install Codelldb
+  ansible.builtin.unarchive:
+    src: https://github.com/vadimcn/codelldb/releases/download/v1.10.0/codelldb-x86_64-linux.vsix
+    dest: "{{ lsps_dir }}/codelldb"
+    remote_src: yes
+
+- name: Make sure Codelldb location environment variable is set
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: 'export CODELLDB_HOME={{ lsps_dir }}/codelldb'
     state: present
 
