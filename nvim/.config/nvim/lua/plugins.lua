@@ -1,58 +1,128 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-end
+return {
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
 
-vim.cmd [[packadd packer.nvim]]
+    opts = {},
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "folke/neodev.nvim",
+    opts = {
+      library = {
+        plugins = { "nvim-dap-ui" },
+        types = true,
+      },
+    },
+  },
+  "neovim/nvim-lspconfig",
+  "tpope/vim-commentary",
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
 
-return require('packer').startup(
-    function(use)
-        -- Packer can manage itself
-        use 'wbthomason/packer.nvim'
-        use {
-            'nvim-treesitter/nvim-treesitter',
-            run = ':TSUpdate'
-        }
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      local configs = require("nvim-treesitter.configs")
 
-        -- Companion to help writing my vim configuration scripts.
-        -- use 'svermeulen/vimpeccable'
-        use 'rafcamlet/nvim-luapad'
+      configs.setup({
+        ensure_installed = { 
+          "rust",
+          "haskell",
+          "java",
+          "c_sharp",
+          "go",
+          "lua",
+          "json",
+        },
+        sync_install = false,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        no_italic = true,
+      })
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    config = function()
+      require("ibl").setup()
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "v2.8.0",
+    config = true,
+    opts = {
+      open_mapping = [[<c-\>]],
+    },
+  },
+  'mfussenegger/nvim-jdtls',
 
-        use {
-            'nvim-telescope/telescope.nvim',
-            branch = '0.1.x',
-            requires = { {'nvim-lua/plenary.nvim'} }
-        }
+  -- Debugging via DAP
+  {
+    'mfussenegger/nvim-dap',
+    version = "0.7.0",
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = true,
+  },
 
-        use 'wsdjeg/luarefvim'
-        use 'euclidianAce/BetterLua.vim'
-        use 'neovim/nvim-lspconfig'
-        use 'hrsh7th/cmp-nvim-lsp'
-        use 'hrsh7th/nvim-cmp'
-        use 'L3MON4D3/LuaSnip'
-        use 'saadparwaiz1/cmp_luasnip'
-        use 'kyazdani42/nvim-tree.lua'
-        use 'tpope/vim-commentary'
-        use 'tpope/vim-fugitive'
-        -- use 'mfussenegger/nvim-jdtls'
+  -- Code completion
+  "neovim/nvim-lspconfig",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/nvim-cmp",
 
-        use 'ntpeters/vim-better-whitespace'
-        use 'jiangmiao/auto-pairs'
+  -- luasnip
+  "L3MON4D3/LuaSnip",
+  "saadparwaiz1/cmp_luasnip",
+}
 
-        -- UI
-        use 'kyazdani42/nvim-web-devicons'
-        use 'akinsho/toggleterm.nvim'
-        use 'lukas-reineke/indent-blankline.nvim'
-        use 'onsails/lspkind-nvim'
-        -- use 'Mofiqul/vscode.nvim'
-        -- use 'sainnhe/gruvbox-material'
-        use 'hoob3rt/lualine.nvim'
-        use 'folke/tokyonight.nvim'
-        use { "catppuccin/nvim", as = "catppuccin", run = ":CatppuccinCompile" }
-
-        if packer_bootstrap then
-            require('packer').sync()
-        end
-    end
-)

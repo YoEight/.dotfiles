@@ -1,2 +1,4 @@
-# neovim-conf
-Neovim 0.6 configuration
+Personal NeoVim configuration
+=================================
+
+This configuration expects Neovim >= 0.9.4
