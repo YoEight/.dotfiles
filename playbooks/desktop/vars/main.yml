@@ -7,7 +7,7 @@ iosevka_fonts:
   include:
     - iosevka-slab-regular.ttf
 
-fonts_dir: ~/.local/fonts
+fonts_dir: ~/.local/share/fonts
 
 fonts:
   - "{{ iosevka_fonts }}"
