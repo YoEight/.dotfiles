@@ -15,7 +15,9 @@
 - name: Import self generated key
   ansible.builtin.command:
     cmd: mokutil --import /etc/pki/akmods/certs/public_key.der 
-    stdin: "qwerty"
+    stdin: |
+      qwerty
+      qwerty
 
 - name: Install Nvidia drivers
   ansible.builtin.yum:

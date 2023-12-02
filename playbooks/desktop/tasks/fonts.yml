@@ -1,7 +1,7 @@
 ---
 - name: Ensure common directories are created
   ansible.builtin.file:
-    path: "{{ fonts_dir }}/{{ item.dir }}"
+    path: "/tmp/{{ item.dir }}"
     state: directory
     mode: "0755"
   loop: "{{ fonts }}"
@@ -9,13 +9,13 @@
 - name: Download Fonts
   ansible.builtin.unarchive:
     src: "{{ item.src }}"
-    dest: "{{ fonts_dir }}/{{ item.dir }}"
+    dest: "/tmp/{{ item.dir }}"
     remote_src: yes
     include: "{{ item.include }}"
   loop: "{{ fonts }}"
 
 - name: Patch fonts (Nerd)
-  ansible.builtin.command: "docker run --rm -v {{ fonts_dir }}/{{ item.dir }}:/in:Z -v {{ fonts_dir }}/{{ item.dir }}_patched:/out:Z nerdfonts/patcher --complete"
+  ansible.builtin.command: "docker run --rm -v /tmp/{{ item.dir }}:/in:Z -v {{ fonts_dir }}/{{ item.dir }}:/out:Z nerdfonts/patcher --complete"
   loop: "{{ fonts }}"
 
 - name: Ensure patched fonts don't conflict with non-patched fonts.

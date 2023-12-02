@@ -80,7 +80,8 @@
 - name: Install Fonts
   import_tasks: fonts.yml
 
-- name: Install Nvidia drivers
-  become: true
-  when: ansible_os_family == 'RedHat'
-  import_tasks: nvidia.yml
+# Installing nvidia drivers through ansbile is not reliable.
+# - name: Install Nvidia drivers
+#   become: true
+#   when: ansible_os_family == 'RedHat'
+#   import_tasks: nvidia.yml
