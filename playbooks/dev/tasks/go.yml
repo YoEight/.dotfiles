@@ -12,6 +12,6 @@
 
 - name: Make sure Gopls is in PATH
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export PATH=$PATH:$HOME/go/bin"
     state: present

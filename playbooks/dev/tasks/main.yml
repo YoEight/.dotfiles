@@ -7,6 +7,16 @@
   loop:
     - "{{ local_app_dir }}"
 
+- name: Set Profile session file for Debian-based systems
+  set_fact:
+    profile_session_file: ~/.profile
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Set Profile session file for RedHat-based systems
+  set_fact:
+    profile_session_file: ~/.bash_profile
+  when: ansible_facts['os_family'] == "RedHat"
+
 - name: Install common packages
   import_tasks: common.yml
 
@@ -33,6 +43,6 @@
 
 - name: Make sure the local app directory is in PATH
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export PATH=$PATH:{{ local_app_dir }}"
     state: present

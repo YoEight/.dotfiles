@@ -32,7 +32,7 @@
 - name: Make sure dotnet tools set in PATH
   when: dotnet_exists is failed
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: 'export PATH="$PATH:$HOME/.dotnet"'
     state: present
 
@@ -49,6 +49,6 @@
 
 - name: Set up Omnisharp Language Server locations as environment variables
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export OMNISHARP_HOME={{ omnisharp_dir }}"
     state: present

@@ -66,7 +66,7 @@
 
 - name: Set up JDK locations as environment variables
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export JDK{{ item.key }}_HOME={{ item.value }}"
     state: present
   loop: "{{ jdk_map | dict2items }}"
@@ -109,7 +109,7 @@
 
 - name: Set up JTD Language Server locations as environment variables
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export {{ item.name }}={{ item.value }}"
     state: present
   loop: "{{ jdtls_vars }}"
@@ -137,7 +137,7 @@
 
 - name: Set up Java Debug locations as environment variables
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export JAVA_DEBUG_HOME={{ lsps_dir }}/java-debug"
     state: present
 
@@ -157,7 +157,7 @@
 
 - name: Set up vscode-java-test locations as environment variables
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export VSCODE_JAVA_TEST_HOME={{ lsps_dir }}/vscode-java-test"
     state: present
 

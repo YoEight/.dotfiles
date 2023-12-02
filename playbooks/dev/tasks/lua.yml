@@ -18,7 +18,7 @@
 
 - name: Set up Lua language server locations as environment variables
   ansible.builtin.lineinfile:
-    path: ~/.profile
+    path: "{{ profile_session_file }}"
     line: "export LUA_LS_HOME={{ lua_ls_dir }}"
     state: present
 

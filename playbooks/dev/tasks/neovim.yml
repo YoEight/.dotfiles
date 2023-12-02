@@ -29,3 +29,15 @@
 - name: Move Neovim binary to local binary directory
   ansible.builtin.shell: "mv /tmp/nvim.appimage {{ local_app_dir }}/nvim"
 
+- name: Set up neovim as default editor when in a terminal
+  ansible.builtin.lineinfile:
+    path: "{{ profile_session_file }}"
+    line: "export {{ item.name }}={{ item.value }}"
+    state: present
+  loop:
+    - name: EDITOR
+      value: nvim
+
+    - name: VISUAL
+      value: nvim
+
