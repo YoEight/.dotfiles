@@ -7,7 +7,15 @@ iosevka_fonts:
   include:
     - iosevka-slab-regular.ttf
 
+ubuntu_fonts:
+  src: https://assets.ubuntu.com/v1/0cef8205-ubuntu-font-family-0.83.zip
+  dir: ubuntu
+  include:
+    - Ubuntu-B.ttf
+    - Ubuntu-R.ttf
+
 fonts_dir: ~/.local/share/fonts
 
 fonts:
   - "{{ iosevka_fonts }}"
+  - "{{ ubuntu_fonts }}"
