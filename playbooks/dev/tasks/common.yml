@@ -10,6 +10,7 @@
       - golang
       - npm
       - sudo
+      - unzip
     state: present
 
 - name: Install Specific Debian-based dependencies
