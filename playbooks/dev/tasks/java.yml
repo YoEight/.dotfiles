@@ -126,7 +126,7 @@
     repo: https://github.com/microsoft/java-debug.git
     dest: "{{ lsps_dir }}/java-debug"
     clone: yes
-    update: yes
+    update: no
 
 - name: Build Java Debug
   ansible.builtin.shell:
