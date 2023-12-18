@@ -2,7 +2,7 @@
 - name: Set up docker repository on Debian-based systems.
   when: ansible_os_family == 'Debian'
   become: true
-  ansible.builtin.script: docker_repo_debian.sh
+  ansible.builtin.script: "docker_repo_{{ ansible_distribution | lower }}.sh"
   args:
     executable: /bin/bash
 
