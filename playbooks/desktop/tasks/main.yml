@@ -29,7 +29,7 @@
   when: ansible_os_family == 'Debian'
   become: true
   ansible.builtin.apt:
-    deb: https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-desktop-4.35.126-amd64.deb
+    deb: "https://downloads.slack-edge.com/releases/linux/{{ slack_version }}/prod/x64/slack-desktop-{{ slack_version }}-amd64.deb"
 
 - name: Download Slack Desktop GPG signature for RedHat-based systems
   when: ansible_os_family == 'RedHat'
@@ -48,14 +48,14 @@
   when: ansible_os_family == 'RedHat'
   become: true
   ansible.builtin.yum:
-    name: https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-4.35.126-0.1.el8.x86_64.rpm
+    name: "https://downloads.slack-edge.com/releases/linux/{{ slack_version }}/prod/x64/slack-{{ slack_version }}.1.el8.x86_64.rpm"
     state: present
 
 - name: Install Zoom on Debian-based system
   when: ansible_os_family == 'Debian'
   become: true
   ansible.builtin.apt:
-    deb: https://zoom.us/client/5.16.10.668/zoom_amd64.deb
+    deb: "https://zoom.us/client/{{ zoom_version }}/zoom_amd64.deb"
 
 - name: Download Zoom GPG key for RedHat-based system
   when: ansible_os_family == 'RedHat'
@@ -74,11 +74,11 @@
   when: ansible_os_family == 'RedHat'
   become: true
   ansible.builtin.yum:
-    name: https://zoom.us/client/5.16.10.668/zoom_x86_64.rpm
+    name: "https://zoom.us/client/{{ zoom_version }}/zoom_x86_64.rpm"
     state: present
 
-- name: Install Fonts
-  import_tasks: fonts.yml
+# - name: Install Fonts
+#   import_tasks: fonts.yml
 
 # Installing nvidia drivers through ansbile is not reliable.
 # - name: Install Nvidia drivers

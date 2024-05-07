@@ -19,3 +19,6 @@ fonts_dir: ~/.local/share/fonts
 fonts:
   - "{{ iosevka_fonts }}"
   - "{{ ubuntu_fonts }}"
+
+slack_version: 4.37.101
+zoom_version: 6.0.2.4680
